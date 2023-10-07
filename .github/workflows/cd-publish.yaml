@@ -16,3 +16,4 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_REGISTRY_PASSWORD: ${{ secrets.PYPI_TOKEN }}
           PYTHON_VERSION: "3.10"
+          BRANCH: "main"
