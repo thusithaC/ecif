@@ -5,15 +5,16 @@ on:
     types: [ published ]
 
 jobs:
-  publish-service-client-package:
+  build:
+    name: Build distribution
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
-      - name: Publish PyPi package
-        uses: code-specialist/pypi-poetry-publish@v1
+      - uses: actions/checkout@v4
+
+      - name: Build and publish to pypi
+        uses: JRubics/poetry-publish@v1.17
         with:
-          ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PUBLISH_REGISTRY_PASSWORD: ${{ secrets.PYPI_TOKEN }}
-          PYTHON_VERSION: "3.10"
-          BRANCH: "main"
+          pypi_token: ${{ secrets.PYPI_TOKEN }}
+          python_version: "3.10"
+          poetry_version: ">=1.6.1"
+          ignore_dev_requirements: "yes"
