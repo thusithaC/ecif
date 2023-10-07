@@ -1,2 +1,2 @@
-# ecif
-Experimentation and Causal Inference Framework
+# Experimentation and Causal Inference Framework (ECIF)
+
