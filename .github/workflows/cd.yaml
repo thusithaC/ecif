@@ -1,0 +1,25 @@
+name: "CD pipeline of the repository for dev resources."
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  tag:
+    name: Create a new tag
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      new_tag: ${{ steps.push-tag.outputs.new_tag }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Push tag
+        id: push-tag
+        uses: anothrNick/github-tag-action@1.61.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WITH_V: true
