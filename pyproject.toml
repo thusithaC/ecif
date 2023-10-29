@@ -67,6 +67,7 @@ asyncio_mode = "auto"
 
 [tool.pylint]
 max-line-length = 120
+min-similarity-lines=8
 disable = ["too-few-public-methods", "fixme", "broad-exception-caught", "logging-fstring-interpolation"]
 
 [build-system]
