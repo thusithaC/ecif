@@ -1,7 +1,8 @@
 """This is the main control module."""
-from ecif.utils.logging import get_logger
-from ecif.configs.base_trial_config import BaseTrialConfig
 from pathlib import Path
+
+from ecif.configs.base_trial_config import BaseTrialConfig
+from ecif.utils.logging import get_logger
 
 logger = get_logger(__name__)
 
@@ -15,8 +16,16 @@ class Orchestrator:
      - Saving experiment data and results objects
 
     """
+
     def __init__(
-            self,
-            config_file: str | Path,
+        self,
+        config_file: str | Path,
     ):
+        """Initialize the orchestrator.
+
+        Args:
+            config_file: Path of the configuration file.
+        """
         self.config = BaseTrialConfig.from_yaml(config_file)
+
+        # TODO dynamic loading of data

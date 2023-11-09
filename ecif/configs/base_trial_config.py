@@ -1,8 +1,8 @@
 """Config object for a Trial."""
 from enum import Enum
-
-from pydantic import BaseModel, ValidationError, model_validator, ConfigDict
 from pathlib import Path
+
+from pydantic import BaseModel, ConfigDict, ValidationError, model_validator
 from pydantic_yaml import parse_yaml_file_as
 
 
@@ -15,16 +15,17 @@ class CalculationMethod(Enum):
 
 class DataModel(BaseModel):
     """Data setup for the trial."""
+
     model_config = ConfigDict(frozen=True, from_attributes=True)
 
     target_column: str
     treatment_column: str
     control_variable_columns: None | list[str]
-    data_fetcher: str
 
 
 class CalculationModel(BaseModel):
     """Calculation model for the trial."""
+
     model_config = ConfigDict(frozen=True, from_attributes=True)
 
     method: CalculationMethod
@@ -51,5 +52,5 @@ class BaseTrialConfig(BaseModel):
 
     @classmethod
     def from_yaml(cls, file: str | Path) -> "BaseTrialConfig":
-        """"""
+        """Create object from yaml file."""
         return parse_yaml_file_as(cls, file)
