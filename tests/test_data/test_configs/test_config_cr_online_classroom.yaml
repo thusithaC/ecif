@@ -1,0 +1,18 @@
+trial_name: Test Classical Regression with online_classroom data
+
+data:
+  target_column: falsexam
+  treatment_column: format_ol
+  control_variable_columns:
+    - "gender"
+    - "asian"
+    - "black"
+    - "hawaiian"
+    - "hispanic"
+    - "white"
+    - "unknown"
+
+calculation_model:
+  method: classical-regression
+  estimate_intervals: true
+  interval_level: 0.95
